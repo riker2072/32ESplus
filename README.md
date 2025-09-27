@@ -5,11 +5,12 @@ Features include those on the 32ES.  New features are listed first:
 
 An enhanced version of the 32ES calculator is the 32ES+.  This adds algebraic equation capability, an off image, clock and control over the beep sound.  The 32ES+ software is currently at a beta stage.
 
-This uses algebraic parser functions from Github user Zserge which is provided for free use with the MIT license.  Limitations are that it does not check for expression validity.  If parentheses are mismatched, it can cause a crash.  Therefore, to save equations (on a micro SD card), press Shift-Off to turn the calculator off, and turn the calculator on.  It can hold up to 10 equations of 100 characters each.  Go to the Solve/Integrate menu and press D for getEQ.  Exponents must have a plus sign after the “e” and before the number, for example, 1.5e+5.  Negative exponents are fine, such as 2.3e-3.  Supported functions are sqrt, e^x, ln, y^x, 1/x, sin, cos, tan, asin, acos, atan, x^2, 10^x, log, pi, +, -, * and /.  To evaluate an expression, press XEQ when on the expression you want to evaluate.
+This uses a new algebraic parser that I wrote.  Limitations are that it does not check for expression validity.  If parentheses are mismatched, unpredictable results occur.
+To save equations (on a micro SD card), press Shift-Off to turn the calculator off, and turn the calculator on.  It can hold up to 10 equations of 100 characters each.  Go to the Solve/Integrate menu and press D for getEQ.  Exponents cannot have a plus sign after the “e” and before the number, for example, 1.5e5 is valid.  Negative exponents are fine, such as 2.3e-3.  Supported functions are sqrt, e^x, ln, y^x, sin, cos, tan, asin, acos, atan, x^2, 10^x, log, pi, +, -, * and /.  To evaluate an expression, press XEQ when on the expression you want to evaluate.
 
 For solving, press Enter once you are on the equation you want to solve.  Instead of A^2+B^2=C^2, you would have A^2+B^2-C^2, which makes it equal to 0.  To solve for C, enter the values of A and B, go to the Solve/Integrate menu and select “E” SolveEq and when prompted SOLVE, choose C.  For example if A is 3 and B is 4, C would be 5.  You can also solve for A or B.
 
-For integrating, press Enter once you are on the equation you want to integrate.  Set the FIX digits to the precision you want.  Enter on the stack first the lower limit and then the upper limit.  Go to the Solve/Integrate menu and select “F”, IntegEq.  Enter the variable to integrate, like X.  Of course this will be slower than using a program and RPN, but easier to enter.  Just enter X^2 and find that from 0 to 10 the result is 333.33  With a program, you have to do LBL A, RCL X, X^2 and RTN.
+For integrating, press Enter once you are on the equation you want to integrate.  Set the FIX digits to the precision you want.  Enter on the stack first the lower limit and then the upper limit.  Go to the Solve/Integrate menu and select “F”, IntegEq.  Enter the variable to integrate, like X.  Just enter X^2 and find that from 0 to 10 the result is 333.33  With a program, you have to do LBL A, RCL X, X^2 and RTN.
 
 The off image is pic.bmp and the resolution is 434x212.
 
@@ -18,6 +19,42 @@ To set the clock time, put the time on the stack in the form of HH.MM and go to 
 To enable or disable the beep sound, select D, Beep in the Mode menu.
 
 Source code may be provided at a future date once further testing has been done and the code is more stable.
+
+Some test equations:
+
+(((A*X+B)*X+C)*X+D)*X+E with A=1, B=3, C=2, D=4, E=5, solving for X returns -1.194206227
+
+sin(pi()/2) returns 1
+
+-2.058e-65*(-3) returns 6.174e-65 (must use - (minus) key, cannot use +/- change sign)
+
+-(-(8+3)) returns 11
+
+-(7+(8*(2^(4/2)+6*7)-8*6)^(2^2)/8)+6*2 returns -1.310719995e+09 (when SCI format is used with 9 digits)
+
+-(7+(8*(2^(4/2)+6*7)-8*6)^(2^1.5)/8)+6*2 returns-1.522448943e+06 (when SCI format is used with 9 digits)
+
+2.6e7*31 returns 8.06e+08 (with SCI format).  This has "problems" when FIX 9 is used.  Returns 806000000.000000049
+When trying 2.6e7*32 or 2.6e7*30 results are also interesting when using FIX 9 vs SCI 9.
+
+2e3*4 returns 8000.  Cannot do 2e+3*4
+
+-5*(-7)*(-3) returns -105.  Cannot do -5*-7 or -5*-7*-3
+
+sin(asin(sin(asin(0.5)))) returns 0.5
+
+asin(sin(asin(sin(pi()/4)))) returns 0.785398164
+
+1e2*exp(1) returns 271.828182846
+
+Integrating x^2 from 0 to 10 with 8 digits of precision returns 333.33333333 and is faster than integrating this program:
+
+A0 LBL A
+A1 RCL X
+A2 X^2
+A3 RTN
+
+Trig functions are in radians.
 
 32ES notes:
 
