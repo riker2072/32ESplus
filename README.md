@@ -8,6 +8,10 @@ An enhanced version of the 32ES calculator is the 32ES+.  This adds algebraic eq
 This uses a new algebraic parser that I wrote.  Limitations are that it does not check for expression validity.  If parentheses are mismatched, unpredictable results occur.
 To save equations (on a micro SD card), press Shift-Off to turn the calculator off, and turn the calculator on.  It can hold up to 10 equations of 100 characters each.  Go to the Solve/Integrate menu and press D for getEQ.  Exponents cannot have a plus sign after the “e” and before the number, for example, 1.5e5 is valid.  Negative exponents are fine, such as 2.3e-3.  Supported functions are sqrt, e^x, ln, y^x, sin, cos, tan, asin, acos, atan, x^2, 10^x, log, pi, +, -, * and /.  To evaluate an expression, press XEQ when on the expression you want to evaluate.
 
+To get an ( character, use shift / (divide).
+
+To get a ) character, use shift * (multiply).
+
 For solving, press Enter once you are on the equation you want to solve.  Instead of A^2+B^2=C^2, you would have A^2+B^2-C^2, which makes it equal to 0.  To solve for C, enter the values of A and B, go to the Solve/Integrate menu and select “E” SolveEq and when prompted SOLVE, choose C.  For example if A is 3 and B is 4, C would be 5.  You can also solve for A or B.
 
 For integrating, press Enter once you are on the equation you want to integrate.  Set the FIX digits to the precision you want.  Enter on the stack first the lower limit and then the upper limit.  Go to the Solve/Integrate menu and select “F”, IntegEq.  Enter the variable to integrate, like X.  Just enter X^2 and find that from 0 to 10 the result is 333.33  With a program, you have to do LBL A, RCL X, X^2 and RTN.
