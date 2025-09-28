@@ -34,16 +34,18 @@ sin(pi()/2) returns 1
 
 -(-(8+3)) returns 11
 
--(7+(8*(2^(4/2)+6*7)-8*6)^(2^2)/8)+6*2 returns -1.310719995e+09 (when SCI format is used with 9 digits)
+Spaces have been added to the following 5 equations because I noticed some formatting issues when saving changes (but are not necessary when entering the equation)
 
--(7+(8*(2^(4/2)+6*7)-8*6)^(2^1.5)/8)+6*2 returns-1.522448943e+06 (when SCI format is used with 9 digits)
+-(7+(8*(2^(4/2)+6 * 7)-8 * 6)^(2^2)/8)+6*2 returns -1.310719995e+09 (when SCI format is used with 9 digits)
 
-2.6e7*31 returns 8.06e+08 (with SCI format).  This has "problems" when FIX 9 is used.  Returns 806000000.000000049
-When trying 2.6e7*32 or 2.6e7*30 results are also interesting when using FIX 9 vs SCI 9.
+-(7+(8*(2^(4/2)+6 * 7)-8 * 6)^(2^1.5)/8)+6*2 returns-1.522448943e+06 (when SCI format is used with 9 digits)
 
-2e3*4 returns 8000.  Cannot do 2e+3*4
+2.6e7 * 31 returns 8.06e+08 (with SCI format).  This has "problems" when FIX 9 is used.  Returns 806000000.000000049
+When trying 2.6e7 * 32 or 2.6e7 * 30 results are also interesting when using FIX 9 vs SCI 9.
 
--5*(-7)*(-3) returns -105.  Cannot do -5*-7 or -5*-7*-3
+2e3 * 4 returns 8000.  Cannot do 2e+3 * 4
+
+-5 * (-7) * (-3) returns -105.  Cannot do -5 * -7 or -5 * -7 * -3
 
 sin(asin(sin(asin(0.5)))) returns 0.5
 
